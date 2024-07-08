@@ -1,0 +1,29 @@
+{
+  "name": "shoeping",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gauravsharma2003/Shoe-Ping-E-commerce-Website-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gauravsharma2003/Shoe-Ping-E-commerce-Website-/issues"
+  },
+  "homepage": "https://github.com/gauravsharma2003/Shoe-Ping-E-commerce-Website-#readme",
+  "description": "",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.5",
+    "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  }
+}
