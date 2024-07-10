@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-7">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
-</head>
-<body>
-    <ul>
-       <% for(let item of products){ %>
-        <li>
-            <img style="width:25%;" src="<%= item.img %>" alt="<%= item.name %>">
-            <h3><%= item.name %></h3>
-            <h4><%= item.price %></h4>
-            <p><%= item.desc %></p>
-        </li>
-       <% } %>
-    </ul>
-</body>
-</html>
+<%layout('layouts/boilerPlate')%>
+<%-include('../partials/navbar')%>
+
+<div class="row">
+  <% for(let item of products){ %>
+    <div class="col-lg-3 mb-4">
+      <div class="card h-100">
+        <img src="<%= item.img %>" class="card-img-top img-fluid" alt="..." style="object-fit: cover; height: 18rem;">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title"><%= item.name %></h5>
+          <h3 class="card-text"><%= item.price %></h3>
+          <p class="card-text flex-grow-1"><%= item.desc %></p>
+          <a href="#" class="btn btn-primary mt-auto">View</a>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>
