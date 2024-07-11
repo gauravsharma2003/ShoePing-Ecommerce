@@ -4,6 +4,7 @@ const port = 8000;
 const path = require("path");
 const seedDB = require("./seed");
 const productRoutes =require('./routes/products');
+const reviewRoutes =require('./routes/review');
 const ejsMate=require('ejs-mate');
 const mongoose = require("mongoose");
 const methodOverride = require('method-override')
@@ -30,6 +31,7 @@ app.use(express.urlencoded({ extended: true }))
 // seedDB() always comment this after seeding data for one time else it will keep on adding after every change in code
 
 app.use(productRoutes);
+app.use(reviewRoutes);
 
 
 
