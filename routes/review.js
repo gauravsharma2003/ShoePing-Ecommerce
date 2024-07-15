@@ -5,6 +5,7 @@ const router = express.Router();
 
 // Adding a review to a specific product
 router.post('/products/:id/review', async (req, res) => {
+    try{
     let { id } = req.params;
     let { rating, comment } = req.body;
     const product = await Product.findById(id);
@@ -13,6 +14,10 @@ router.post('/products/:id/review', async (req, res) => {
     await review.save();
     await product.save();
     res.redirect(`/products/${id}`);
+    }
+    catch(err){
+        res.status(500).render('error', { error: err });
+    }
 });
 
 module.exports = router;
