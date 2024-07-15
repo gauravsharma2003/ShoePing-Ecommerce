@@ -28,4 +28,11 @@ const productSchema = new mongoose.Schema({
     }]
 });
 
+//prodcution level code , just to delete the reviews after a product is delete using scheme middleware 
+productSchema.post('findOneAndDelete', async function(product){
+    if(product.reviews.length>0){
+       await Review.deleteMany({_id:{$in:product.reviews}})
+    }
+})
+
 module.exports = mongoose.model('Product', productSchema);
