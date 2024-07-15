@@ -1,6 +1,7 @@
 const express = require('express');
 const Product = require('../models/Products');
 const router = express.Router();  // it is a mini instance 
+const {validateProduct}=require('../middleware')
 
 // To show all the products
 router.get('/products', async (req, res) => {
@@ -22,7 +23,7 @@ router.get('/product/new', (req, res) => {
 });
 
 // To add the products in db which came from the form above
-router.post('/products', async (req, res) => {
+router.post('/products', validateProduct, async (req, res) => {
   try {
     let { name, img, desc, price } = req.body;
     await Product.create({ name, img, desc, price });
@@ -55,7 +56,7 @@ router.get('/products/:id/edit', async (req, res) => {
 });
 
 // To edit the data in db from above form
-router.patch('/products/:id', async (req, res) => {
+router.patch('/products/:id', validateProduct, async (req, res) => {
   try {
     let { id } = req.params;
     let { name, img, desc, price } = req.body;
