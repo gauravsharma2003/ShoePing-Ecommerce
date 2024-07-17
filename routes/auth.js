@@ -8,16 +8,21 @@ const router = express.Router();
 router.get('/register', (req, res)=>{
     res.render('auth/signup')
 })
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res, next) => {
     try {
-      let { username, email, password } = req.body;
-      const user=new User({username, email})
-      const newUser=await User.register(user, password)
-      res.redirect('/login');
+        let { username, email, password } = req.body;
+        const user = new User({ username, email });
+        const newUser = await User.register(user, password);
+        req.login(newUser, function(err) {
+            if (err) {
+                return next(err);
+            }
+            res.redirect('/products');
+        });
     } catch (err) {
-      res.status(500).render('error', { error: err });
+        res.status(500).render('error', { error: err });
     }
-  });
+});
 
 
   //login

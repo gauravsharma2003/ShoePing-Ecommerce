@@ -37,7 +37,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
   secret: 'your_secret_key',  // Replace with your own secret key
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie:{
+    httpOnly:true,
+    maxAge:24*7*60*60*1000,
+    Expires:Date.now()+24*7*60*60*1000,
+  }
 }));
 
 // Initialize Passport and restore authentication state, if any, from the session
@@ -45,6 +50,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+app.use((req, res,next)=>{
+  res.locals.currentUser=req.user;
+  next();
+})
 
 // Seeding DB
 // seedDB(); // Uncomment this line only when you want to seed the database

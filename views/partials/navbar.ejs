@@ -21,14 +21,22 @@
     </div>
   </div>
   <div class="d-flex">
+     <% if(!currentUser){%>
+    <a href="/login"><button type="button" class="btn btn-success mx-1 my-auto">Login</button></a>
+    <a href="/register"><button type="button" class="btn btn-primary mx-1 my-auto">SignUp</button></a>
+    <% } else{%>
+
     <a class="mx-3 my-auto nav-link position-relative" href="">
       <i class="material-symbols-outlined">shopping_cart</i>
       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
         2
       </span>
     </a>
-    <a href="/register"><button type="button" class="btn btn-primary mx-1 my-auto">SignUp</button></a>
-    <a href="/login"><button type="button" class="btn btn-success mx-1 my-auto">Login</button></a>
     <a href="/logout"><button type="button" class="btn btn-danger mx-1 my-auto">Logout</button></a>
+    <%}%>
+
+    
+  
+   
   </div>
 </nav>

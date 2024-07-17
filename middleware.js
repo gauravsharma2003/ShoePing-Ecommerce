@@ -1,5 +1,5 @@
 
-const { productSchema, reviewSchema } = require('./schema');
+const { productSchema, reviewSchema,} = require('./schema');
 
 const validateProduct = (req, res, next) => {
   let { name, img, price, desc } = req.body;
@@ -19,4 +19,12 @@ const validateReview = (req, res, next) => {
   next();
 }
 
-module.exports = { validateProduct, validateReview };
+const isLoggedIn = (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect('/login');
+  }
+  next();
+};
+
+
+module.exports = { validateProduct, validateReview ,isLoggedIn};
