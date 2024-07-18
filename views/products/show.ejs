@@ -10,9 +10,11 @@
         <h5 class="card-text"><%= FoundProduct.price %> &#8377;</h5>
         <p class="card-text flex-grow-1"><%= FoundProduct.desc %></p>
         <a href="#" class="btn btn-primary btn-sm mt-2">Buy Now</a>
-        <a href="#" class="btn btn-primary btn-sm mt-2">Add to cart</a>
+        <form action="/user/<%= FoundProduct._id%>/add" method="POST" class="d-inline-block">
+        <button  class="btn btn-primary btn-sm mt-2">Add to cart</button>
+      </form>
         <% if (currentUser && currentUser._id.equals(FoundProduct.author)) { %>
-          <a href="/products/<%= FoundProduct._id %>/edit" class="btn btn-primary btn-sm mt-2">Edit</a>
+          <a href="/products/<%= FoundProduct._id%>/edit" class="btn btn-primary btn-sm mt-2">Edit</a>
         <% } %>
       </div>
     </div>

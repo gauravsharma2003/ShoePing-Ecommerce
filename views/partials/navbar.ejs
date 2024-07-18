@@ -34,10 +34,10 @@
 
         <% if(currentUser && currentUser.role==='buyer' ) { %>
         
-          <a class="mx-3 my-auto nav-link position-relative" href="">
+          <a class="mx-3 my-auto nav-link position-relative" href="/user/cart">
             <i class="material-symbols-outlined">shopping_cart</i>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              2
+              <%=currentUser.cart.length%>
             </span>
           </a>
           <%}%>

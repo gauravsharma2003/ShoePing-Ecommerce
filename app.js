@@ -14,6 +14,7 @@ const User = require('./models/User');
 const productRoutes = require('./routes/products');
 const reviewRoutes = require('./routes/review');
 const authRoutes = require('./routes/auth');
+const cartRoutes = require('./routes/cart');
 
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'));
@@ -65,6 +66,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 app.use(productRoutes);
 app.use(reviewRoutes);
 app.use(authRoutes);
+app.use(cartRoutes);
 
 app.listen(port, () => {
   console.log(`Server of ShoePing connected`);
