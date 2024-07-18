@@ -25,7 +25,12 @@ const productSchema = new mongoose.Schema({
     reviews: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Review',
-    }]
+    }],
+    author:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+
+    }
 });
 
 //prodcution level code , just to delete the reviews after a product is delete using scheme middleware 

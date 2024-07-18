@@ -26,5 +26,23 @@ const isLoggedIn = (req, res, next) => {
   next();
 };
 
+const isSeller = (req, res, next) => {
+  if (!req.user.role) {
+    return res.redirect('/products');
+  }
+  else if(req.user.role!== 'seller'){
+    return res.redirect('/products');
+  }
+  next();
+};
 
-module.exports = { validateProduct, validateReview ,isLoggedIn};
+const isProductAuthor= async(req, res, next)=>{
+  let {id}=req.params;
+ let product= await Product.findById(id);
+ if(!product.author.equals(req.user._id)){
+  return res.redirect('/products')
+ }
+ next();
+}
+
+module.exports = { validateProduct, validateReview ,isLoggedIn,isSeller,isProductAuthor};
