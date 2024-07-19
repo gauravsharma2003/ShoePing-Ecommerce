@@ -15,7 +15,7 @@ const productRoutes = require('./routes/products');
 const reviewRoutes = require('./routes/review');
 const authRoutes = require('./routes/auth');
 const cartRoutes = require('./routes/cart');
-
+const indexRoutes = require('./routes/index');
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'));
 
@@ -67,6 +67,7 @@ app.use(productRoutes);
 app.use(reviewRoutes);
 app.use(authRoutes);
 app.use(cartRoutes);
+app.use('/', indexRoutes);
 
 app.listen(port, () => {
   console.log(`Server of ShoePing connected`);
