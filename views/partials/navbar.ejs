@@ -31,8 +31,8 @@
           <p class="my-auto mx-auto text-white">Hello, <%= currentUser.username %></p>
           <% if(currentUser.role === 'buyer') { %>
             <a class="mx-3 nav-link position-relative" href="/user/cart">
-              <i class="material-symbols-outlined text-white">shopping_cart</i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <i class=" my-auto material-symbols-outlined text-white">shopping_cart</i>
+              <span class=" mx-auto position-absolute top-0 start-100 my-auto translate-middle badge rounded-pill bg-danger">
                 <%= currentUser.cart.length %>
               </span>
             </a>
